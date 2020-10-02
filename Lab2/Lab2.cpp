@@ -9,7 +9,7 @@ int main()
     double x, y,function,result;
     int choose;
     cout << "Vvedite x:";
-    cin >> x; // операция взятия из потока
+    cin >> x;
     cout << "Vvedite y:";
     cin >> y;
     cout << "Viberite funciu (1 - sh(x), 2 - x^2, 3 - e^x):";
