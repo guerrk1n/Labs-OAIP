@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <ctime>
 using namespace std;
-const int N = 3, M = 3;
+const int N = 3, M = 4;
 int main()
 {
     setlocale(LC_ALL, "Russian");
@@ -66,6 +66,7 @@ int main()
     
     found = false;
     for (int i = 0; i < N; i++) {
+        // поиск минимального элемента в строке, поиск индекса минимального элемента
         min_row = array1[i][0];
         min_index = 0;
 
@@ -75,6 +76,7 @@ int main()
                 min_index = j;
             }
         }
+        //Проверка, что минимальный элемент в строке является максимальным в стролбце
         int f;
         for (f = 0; f < M; f++) {
             if (min_row < array1[f][min_index]) {
@@ -85,14 +87,12 @@ int main()
         if (f == N) {
         
             cout << "Значение седловой точки: " << min_row << endl;
-            found = true;
+            return 1;
             
         }
-
-        else if (f == N-1 && found == false) {
-       
-            cout << "Седловой точки нет ";
-           
+        if (i == N - 1) {
+        
+            cout << "Седловой точки нет: " << endl;
         }
     }
 
