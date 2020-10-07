@@ -1,12 +1,13 @@
 ﻿#include <iostream>
 #include <ctime>
 using namespace std;
-const int N = 3, M = 4;
+const int N = 3, M = 3;
 int main()
 {
     setlocale(LC_ALL, "Russian");
     srand(time(NULL));
-    int array1[N][M], choice,min,max;
+    int array1[N][M], choice,min_row,min_index,max;
+    bool found;
 
     cout << "Выберите вариант заполения массивов:" << endl;
     cout << "1. Автоматически" << endl;
@@ -62,11 +63,39 @@ int main()
             cout << "\n";
         }
     }
-
+    
+    found = false;
     for (int i = 0; i < N; i++) {
+        min_row = array1[i][0];
+        min_index = 0;
+
         for (int j = 0; j < M; j++) {
+            if (min_row > array1[i][j]) {
+                min_row = array1[i][j];
+                min_index = j;
+            }
+        }
+        int f;
+        for (f = 0; f < M; f++) {
+            if (min_row < array1[f][min_index]) {
+                break;
+            }
+
+        }
+        if (f == N) {
+        
+            cout << "Значение седловой точки: " << min_row << endl;
+            found = true;
+            
+        }
+
+        else if (f == N-1 && found == false) {
+       
+            cout << "Седловой точки нет ";
+           
         }
     }
+
 
 }
 
