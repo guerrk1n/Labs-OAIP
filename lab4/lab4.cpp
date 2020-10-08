@@ -46,14 +46,29 @@ int main()
     // Вывод полученных массивов
     if (choice == 1) {
         cout << "Полученные случайные массивы чисел:" << endl;
+        cout << "Первый массив: { ";
         for (int i = 0; i < ARRAY_LENGTH1; i++) {
-            cout << "array1[" << i << "]: " << array1[i] << "\n";
+            cout << array1[i] << " ";
         }
-
-        cout << "------------------------------" << endl;
+        cout << "}" << endl;
+        cout << "Второй массив: { ";
         for (int i = 0; i < ARRAY_LENGTH2; i++) {
-            cout << "array2[" << i << "]: " << array2[i] << "\n";
+            cout << array2[i] << " ";
         }
+        cout << "}" << endl;
+    }
+    else {
+        cout << "Полученный набор введеных чисел:" << endl;
+        cout << "Первый массив: { ";
+        for (int i = 0; i < ARRAY_LENGTH1; i++) {
+            cout << array1[i] << " ";
+        }
+        cout << "}" << endl;
+        cout << "Второй массив: { ";
+        for (int i = 0; i < ARRAY_LENGTH2; i++) {
+            cout << array2[i] << " ";
+        }
+        cout << "}" << endl;
     }
     // Сортировка первого массива методом пузырька
     for (int i = 0; i < ARRAY_LENGTH1; i++){
@@ -80,14 +95,12 @@ int main()
         }
         if (counter == ARRAY_LENGTH2) {
             min = array1[i];
-            cout << min << endl;
+            cout << "Минимальный элемент: " << min << endl;
             break;
         }
         if (i == ARRAY_LENGTH1 - 1) {
-            cout << "Наименьше значения среди элементов первого массива, которые не входят во второй, нет";
+            cout << "Наименьше значения среди элементов первого массива, которые не входят во второй, нет" << endl;
         }
     }
     return 0;
 }
-
-

@@ -6,7 +6,7 @@ int main()
 {
     setlocale(LC_ALL, "Russian"); // Функция устанавливает определенный параметр для поддержки кирилицы в консоли
     srand(time(NULL)); // Функция srand выполняет инициализацию генератора случайных чисел
-    int array1[N][M], choice,min_row,min_index,max;
+    int array1[N][M], choice,min_row,min_index;
     bool found;
 
     // Заполнение массива случайно, либо заполнение пользователем
@@ -65,7 +65,7 @@ int main()
         min_row = array1[i][0];
         min_index = 0;
         for (int j = 0; j < M; j++) {
-            if (min_row > array1[i][j]) {
+            if (min_row >= array1[i][j]) {
                 min_row = array1[i][j];
                 min_index = j;
             }
@@ -82,7 +82,7 @@ int main()
             return 1;
         }
         if (i == N - 1) {
-            cout << "Седловой точки нет: " << endl;
+            cout << "Седловой точки нет" << endl;
         }
     }
     return 0;
