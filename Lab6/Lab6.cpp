@@ -1,8 +1,10 @@
 ﻿#include <iostream>
+
 using namespace std;
 
 int main()
 {
+
 	setlocale(LC_ALL, "Russian"); // Функция устанавливает определенный параметр для поддержки кирилицы в консоли
 	char sent[] = "wikipedia is a free online encyclopedia created and edited by volunteers around the world and hosted by the wikimedia foundation";
 	int buffer, length_sent = strlen(sent), number_spaces = 0;
@@ -35,6 +37,7 @@ int main()
 				buffer = words[j];
 				words[j] = words[j - 1];
 				words[j - 1] = buffer;
+
 			}
 		}
 	}
