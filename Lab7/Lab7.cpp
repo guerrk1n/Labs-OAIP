@@ -1,79 +1,78 @@
 ﻿#include <iostream>
 using namespace std;
-
-const int number_users = 3;
 struct Info {
     string surname;
     string name;
     string patronymic;
     string address;
     double rating;
-
 };
-struct Info_output {
-	string surname;
-	string name;
-	string patronymic;
-	string address;
-	double rating;
 
-};
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    Info info;
-    Info_output info_output;
+	int number_users;
+	cout << "Введите количество абитуриентов:";
+	cin >> number_users;
+    Info* info = new Info[number_users];
 	int counter = 0;
 	string buffer_string;
 	double buffer_double;
 
-
+	cout << "Введите Фамилию, Имя, Отчество, адрес и средний балл через пробел" << endl;
 	for (int i = 0; i < number_users; i++) {
+		cout << "Абитуриент №" << i+1 << ": ";
+		cin >> info[i].surname >> info[i].name >> info[i].patronymic >> info[i].address >> info[i].rating;
 		
-		cin >> info.surname[i] >> info.name[i] >> info.patronymic[i] >> info.address[i] >> info.rating[i];
 
 	}
 	for (int i = 0; i < number_users; i++) {
-		if (info.address[i].compare("minsk") == 0 && info.rating[i] >= 4.5) {
-			info_output.surname[counter] = info.surname[i];
-			info_output.name[counter] = info.name[i];
-			info_output.patronymic[counter] = info.patronymic[i];
-			info_output.address[counter] = info.address[i];
-			info_output.rating[counter] = info.rating[i];
+		if (info[i].address.compare("minsk") == 0 && info[i].rating >= 4.5) {
 			counter++;
 		}
 	}
-
+	Info* info_output = new Info[counter];
+	counter = 0;
+	for (int i = 0; i < number_users; i++) {
+		if (info[i].address.compare("minsk") == 0 && info[i].rating >= 4.5) {
+			info_output[counter].surname = info[i].surname;
+			info_output[counter].name = info[i].name;
+			info_output[counter].patronymic = info[i].patronymic;
+			info_output[counter].address = info[i].address;
+			info_output[counter].rating = info[i].rating;
+			counter++;
+		}
+	}
 	// Сортировка первого массива методом пузырька
 	for (int i = 0; i < counter; i++) {
 		for (int j = 1; j < counter; j++) {
-			if ((int)(info_output.surname[j][0]) < (int)(info_output.surname[j - 1][0])) {
-				buffer_string = info_output.surname[j];
-				info_output.surname[j] = info_output.surname[j - 1];
-				info_output.surname[j - 1] = buffer_string;
+			if ((int)(info_output[j].surname[0]) < (int)(info_output[j-1].surname[0])) {
+				buffer_string = info_output[j].surname;
+				info_output[j].surname = info_output[j-1].surname;
+				info_output[j - 1].surname = buffer_string;
 
-				buffer_string = info_output.name[j];
-				info_output.name[j] = info_output.name[j - 1];
-				info_output.name[j - 1] = buffer_string;
+				buffer_string = info_output[j].name;
+				info_output[j].name = info_output[j - 1].name;
+				info_output[j - 1].name = buffer_string;
 
-				buffer_string = info_output.patronymic[j];
-				info_output.patronymic[j] = info_output.patronymic[j - 1];
-				info_output.patronymic[j - 1] = buffer_string;
+				buffer_string = info_output[j].patronymic;
+				info_output[j].patronymic = info_output[j - 1].patronymic;
+				info_output[j - 1].patronymic = buffer_string;
 
-				buffer_string = info_output.address[j];
-				info_output.address[j] = info_output.address[j - 1];
-				info_output.address[j - 1] = buffer_string;
+				buffer_string = info_output[j].address;
+				info_output[j].address = info_output[j - 1].address;
+				info_output[j - 1].address = buffer_string;
 
-				buffer_double = info_output.rating[j];
-				info_output.rating[j] = info_output.rating[j - 1];
-				info_output.rating[j - 1] = buffer_double;
+				buffer_double = info_output[j].rating;
+				info_output[j].rating = info_output[j - 1].rating;
+				info_output[j - 1].rating = buffer_double;
 			}
 		}
 	}
 
 
 	for (int i = 0; i < counter; i++) {
-		cout << info_output.surname[i] << " " << info_output.name[i] << " " << info_output.patronymic[i] << " " << info_output.address[i] << " " << info_output.rating[i] <<  endl;
+		cout << info_output[i].surname << " " << info_output[i].name << " " << info_output[i].patronymic << " " << info_output[i].address << " " << info_output[i].rating <<  endl;
 	}
 
 	return 0;
