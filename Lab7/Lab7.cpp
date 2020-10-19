@@ -75,6 +75,7 @@ int main()
 	for (int i = 0; i < counter; i++) {
 		cout << info_output[i].surname << " " << info_output[i].name << " " << info_output[i].patronymic << " " << info_output[i].address << " " << info_output[i].rating <<  endl;
 	}
-
+	delete[] info;
+	delete[] info_output;
 	return 0;
 }
