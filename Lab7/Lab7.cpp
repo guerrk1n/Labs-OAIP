@@ -11,21 +11,21 @@ struct Info {
 int main()
 {
     setlocale(LC_ALL, "Russian");
-	int number_users;
+	int number_users, counter = 0;
+	string buffer_string;
+	double buffer_double;
+
 	cout << "Введите количество абитуриентов:";
 	cin >> number_users;
     Info* info = new Info[number_users];
-	int counter = 0;
-	string buffer_string;
-	double buffer_double;
+	
 
 	cout << "Введите Фамилию, Имя, Отчество, адрес и средний балл через пробел" << endl;
 	for (int i = 0; i < number_users; i++) {
 		cout << "Абитуриент №" << i+1 << ": ";
 		cin >> info[i].surname >> info[i].name >> info[i].patronymic >> info[i].address >> info[i].rating;
-		
-
 	}
+	// Подсчет кол-ва абитуриентов, у который адрес Минск и средний балл >= 4.5
 	for (int i = 0; i < number_users; i++) {
 		if (info[i].address.compare("minsk") == 0 && info[i].rating >= 4.5) {
 			counter++;
@@ -33,6 +33,7 @@ int main()
 	}
 	Info* info_output = new Info[counter];
 	counter = 0;
+	// Занесение абитуриентов, у который адрес Минск и средний балл >= 4.5, в структуру info_output для дальнейшней сортировки
 	for (int i = 0; i < number_users; i++) {
 		if (info[i].address.compare("minsk") == 0 && info[i].rating >= 4.5) {
 			info_output[counter].surname = info[i].surname;
@@ -43,7 +44,7 @@ int main()
 			counter++;
 		}
 	}
-	// Сортировка первого массива методом пузырька
+	// Сортировка структуры вывода методом пузырька
 	for (int i = 0; i < counter; i++) {
 		for (int j = 1; j < counter; j++) {
 			if ((int)(info_output[j].surname[0]) < (int)(info_output[j-1].surname[0])) {
@@ -70,7 +71,7 @@ int main()
 		}
 	}
 
-
+	// Вывод итоговой структуры в алфавитном порядке ( сортировка по фамилии )
 	for (int i = 0; i < counter; i++) {
 		cout << info_output[i].surname << " " << info_output[i].name << " " << info_output[i].patronymic << " " << info_output[i].address << " " << info_output[i].rating <<  endl;
 	}
