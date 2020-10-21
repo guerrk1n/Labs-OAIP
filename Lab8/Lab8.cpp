@@ -3,7 +3,7 @@
 using namespace std;
 typedef double(*pointer)(double, double, int&);
 double decomposition_y(double, double, int&);
-double decomposition_s(double, double, int &);
+double decomposition_s(double, double, int&);
 void output(double, double, double, double, pointer);
 
 int main()
@@ -29,24 +29,21 @@ void output(double a, double b, double h,double e, pointer pntr) {
 }
 
 double decomposition_y(double x, double e, int &iterations_number) {
-    iterations_number++;
     return (2 * x * sin(x) - 2 + cos(x)) / 4;
 }
 
 
 double decomposition_s(double x, double e, int &iterations_number) {
-    double term, sum, buffer;
-    sum = buffer = term = x;
+    double term =0, sum=0;
     iterations_number = 1;
     int k = 2;
-    while (fabs(term) > e) {
-        term = pow(-1, k%2) * cos (k * x) / (k*k - 1);
-        buffer *= -term;
+    do {
+        term = pow(-1, (k%2)) * cos (k * x) / (k*k - 1);
         sum += term;
         iterations_number++;
         k++;
         
-    }
+    } while (fabs(term) > e);
     return sum;
 }
 
