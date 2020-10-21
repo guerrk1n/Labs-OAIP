@@ -27,7 +27,7 @@ int main()
 	}
 	// Подсчет кол-ва абитуриентов, у который адрес Минск и средний балл >= 4.5
 	for (int i = 0; i < number_users; i++) {
-		if (info[i].address.compare("minsk") == 0 && info[i].rating >= 4.5) {
+		if (info[i].address.compare("Minsk") == 0 && info[i].rating >= 4.5) {
 			counter++;
 		}
 	}
@@ -35,7 +35,7 @@ int main()
 	counter = 0;
 	// Занесение абитуриентов, у который адрес Минск и средний балл >= 4.5, в структуру info_output для дальнейшней сортировки
 	for (int i = 0; i < number_users; i++) {
-		if (info[i].address.compare("minsk") == 0 && info[i].rating >= 4.5) {
+		if (info[i].address.compare("Minsk") == 0 && info[i].rating >= 4.5) {
 			info_output[counter].surname = info[i].surname;
 			info_output[counter].name = info[i].name;
 			info_output[counter].patronymic = info[i].patronymic;
@@ -71,6 +71,7 @@ int main()
 		}
 	}
 
+	cout << "Фамилию, Имя, Отчество, адрес и средний балл абитуриентов, проживающие в г. Минск и со средним баллом больше 4.5" << endl;
 	// Вывод итоговой структуры в алфавитном порядке ( сортировка по фамилии )
 	for (int i = 0; i < counter; i++) {
 		cout << info_output[i].surname << " " << info_output[i].name << " " << info_output[i].patronymic << " " << info_output[i].address << " " << info_output[i].rating <<  endl;
